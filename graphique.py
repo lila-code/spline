@@ -6,7 +6,7 @@ import PIL.ImageTk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 from traitement import *
-
+import os 
 
 class render:
 
@@ -89,7 +89,7 @@ class render:
         self.fenetre.grid_rowconfigure(0, weight=1)
         self.canvas = Canvas(self.dynamic_screen, bg='white', width=800, height=600)
         self.canvas.grid(sticky="NSEW")
-        self.logo = PhotoImage(file=r'/home/lila/Documents/GIS4/semestre1/CN/clspline/logo.png')
+        self.logo = PhotoImage(file=r'splineUI/logo.png')
         self.canvas.create_image(400,300,image=self.logo)
         
     def ouvrir_fichier(self):
@@ -100,10 +100,10 @@ class render:
         a = plt.subplot(1, 1, 1)
         a.scatter(noeuds[:, 0], noeuds[:, 1],color='red')
         plt.title ("Noeuds", fontsize=16)
-        fig.savefig('noeuds.png')
+        fig.savefig(os.getcwd()+'noeuds.png')
 
     def visualiser_noeuds(self):
-        self.logo = PhotoImage(file=r'/home/lila/Documents/GIS4/semestre1/CN/clspline/noeuds.png')
+        self.logo = PhotoImage(file=os.getcwd()+'noeuds.png')
         self.canvas.create_image(400,300,image=self.logo)
 
     def calculer_spline(self):
@@ -111,16 +111,16 @@ class render:
             splines(self.filename,self.var_lambda.get(), self.var_lambdamin.get(), self.var_lambdamax.get())
     
     def visualiser_CV(self):
-        self.logo = PhotoImage(file=r'/home/lila/Documents/GIS4/semestre1/CN/clspline/CV.png')
+        self.logo = PhotoImage(file=os.getcwd()+'/CV.png')
         self.canvas.create_image(400,300,image=self.logo)
     def visualiser_spline(self):
-        self.logo = PhotoImage(file=r'/home/lila/Documents/GIS4/semestre1/CN/clspline/spline.png')
+        self.logo = PhotoImage(file=os.getcwd()+'/spline.png')
         self.canvas.create_image(400,300,image=self.logo)
     def visualiser_rl(self):
-        self.logo = PhotoImage(file=r'/home/lila/Documents/GIS4/semestre1/CN/clspline/rl.png')
+        self.logo = PhotoImage(file=os.getcwd()+'/rl.png')
         self.canvas.create_image(400,300,image=self.logo)
     def visualiser_interpol(self):
-        self.logo = PhotoImage(file=r'/home/lila/Documents/GIS4/semestre1/CN/clspline/interpol.png')
+        self.logo = PhotoImage(file=os.getcwd()+'/interpol.png')
         self.canvas.create_image(400,300,image=self.logo)
 
 

@@ -294,15 +294,15 @@ def splines(filename, p, lambda_min, lambda_max):
             CV += ((ycoord[j]- spline(xcoord[j], j)) / (1 - sp[j, j] ))**2
             # print(f'x, y = {xval:+.10f}, {yval:+.10f}')
         if(i==0):
-            enregistrer_plot(xarray, yarray, "spline.png", f'Spline pour p = {lesp[0]}', colorFader(c1,c2,(i)/nbP), noeuds, True)
+            enregistrer_plot(xarray, yarray, os.getcwd()+"/spline.png", f'Spline pour p = {lesp[0]}', colorFader(c1,c2,(i)/nbP), noeuds, True)
    
         elif(i==1):
-            enregistrer_plot(xarray, yarray, "rl.png", "La plus proche de la droite de régression", colorFader(c1,c2,(i)/nbP), noeuds, True)
+            enregistrer_plot(xarray, yarray, os.getcwd()+"/rl.png", "La plus proche de la droite de régression", colorFader(c1,c2,(i)/nbP), noeuds, True)
    
         elif(i == nbP-1):
-            enregistrer_plot(xarray, yarray, "interpol.png", "La plus proche de la fonction interpolante", colorFader(c1,c2,(i)/nbP), noeuds, True)
+            enregistrer_plot(xarray, yarray, os.getcwd()+"/interpol.png", "La plus proche de la fonction interpolante", colorFader(c1,c2,(i)/nbP), noeuds, True)
             
-        crossval.append(CV)
+        crossval.append(CV/nbnoeuds)
     
     # print(f'p = {lesp}\n')
     # print(f'CV = {crossval}\n')
